@@ -4,7 +4,10 @@ require_relative('models/customer')
 require_relative('models/film')
 require_relative('models/ticket')
 
+Ticket.delete_all()
+Customer.delete_all()
 Film.delete_all()
+
 film1 =Film.new({
   'title' => 'Clueless',
   'year_of_release' => 1995,
@@ -17,6 +20,9 @@ film2 = Film.new({
   'price' => 10.00
   })
 
+  film1.save()
+  film2.save()
+
 customer1 =Customer.new({
   'name' => 'Caroline'
 })
@@ -25,22 +31,19 @@ customer2 = Customer.new( {
   'name' => 'Dan'
 })
 
-ticket1 = Ticket.new({
-  'customer_id' => 1,
-  'film_id' => '25'
-  })
-
-ticket2 = Ticket.new({
-  'customer_id' => 2,
-  'film_id' => '24'
-  })
-
-
 customer1.save()
 customer2.save()
 
-film1.save()
-film2.save()
+ticket1 = Ticket.new({
+  'customer_id' => customer1.id,
+  'film_id' => film2.id
+  })
+
+ticket2 = Ticket.new({
+  'customer_id' => customer2.id,
+  'film_id' => film1.id
+  })
+
 
 ticket2.save()
 ticket1.save()

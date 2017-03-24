@@ -25,13 +25,23 @@ class Ticket
     SqlRunner.run(sql)
   end
 
+  def film()
+    sql = "SELECT * FROM films WHERE id = #{@film_id}"
+    return films = Film.map_items(sql)
+  end
+
+  def customer()
+    sql = "SELECT * FROM customers WHERE id = #{@customer_id}"
+    return customers = Customer.map_items(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM tickets"
     return Ticket.map_items(sql)
   end
 
   def self.delete_all()
-    sql = "DELETE FROM Film"
+    sql = "DELETE FROM tickets"
     SqlRunner.run(sql)
   end
 
