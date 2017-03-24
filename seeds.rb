@@ -33,6 +33,13 @@ customer2 = Customer.new( {
   'funds' => 200
 })
 
+screening1 = Screening.new(
+'showing_time' => '20:00',
+'film_id' => film1.id
+)
+
+screening1.save()
+
 customer1.save()
 customer2.save()
 
