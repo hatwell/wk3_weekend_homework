@@ -7,6 +7,7 @@ class Customer
     @name = options['name']
     @funds = options['funds'].to_i
     @id = options['id'].to_i
+    @ticket_count = 0
   end
 
   def save()
@@ -28,6 +29,11 @@ class Customer
   def films()
     sql = "SELECT films.* FROM films INNER JOIN tickets ON film_id = #{@id} WHERE tickets.customer_id = #{@id}."
     return films = Film.map_items(sql)
+  end
+
+  def tickets()
+    sql = "SELECT * FROM tickets WHERE customer_id = #{@id}"
+    return Customer.map_items(sql).length
   end
 
   def self.all()

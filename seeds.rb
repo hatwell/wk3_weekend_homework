@@ -24,11 +24,13 @@ film2 = Film.new({
   film2.save()
 
 customer1 =Customer.new({
-  'name' => 'Caroline'
+  'name' => 'Caroline',
+  'funds' => 100
 })
 
 customer2 = Customer.new( {
-  'name' => 'Dan'
+  'name' => 'Dan',
+  'funds' => 200
 })
 
 customer1.save()
