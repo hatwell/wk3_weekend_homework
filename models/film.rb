@@ -34,6 +34,25 @@ class Film
     return customers().length
   end
 
+  def screenings()
+    sql = "SELECT screenings.* FROM screenings WHERE film_id = #{@id}"
+    Screening.map_items(sql)
+  end
+
+  def tickets()
+    sql = "SELECT tickets.* FROM tickets WHERE film_id = #{@id}"
+    Ticket.map_items(sql)
+  end
+
+  def most_popular_screening
+    stuff = []
+    film_screenings = screenings()
+    for screening in film_screenings
+      stuff.push(screening.tickets.length)
+    end
+    return stuff
+  end
+
   def self.all()
     sql = "SELECT * FROM films"
     return Film.map_items(sql)

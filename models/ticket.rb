@@ -7,16 +7,17 @@ class Ticket
     @id = options['id'].to_i
     @customer_id = options['customer_id'].to_i
     @film_id = options['film_id'].to_i
+    @screening_id = options['screening_id'].to_i
   end
 
   def save()
-    sql = "INSERT INTO tickets(customer_id, film_id) VALUES (#{@customer_id}, #{@film_id}) RETURNING *"
+    sql = "INSERT INTO tickets(customer_id, film_id, screening_id) VALUES (#{@customer_id}, #{@film_id}, #{@screening_id}) RETURNING *"
     result = SqlRunner.run(sql)
     @id = result.first()['id'].to_i
   end
 
   def update()
-    sql = "UPDATE tickets SET (customer_id, film_i) = (#{@customer_id}, #{@film_id}) WHERE id = #{@id}"
+    sql = "UPDATE tickets SET (customer_id, film_i) = (#{@customer_id}, #{@film_id}, #{@screening_id}) WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
